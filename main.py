@@ -24,10 +24,10 @@ def read_csv(file):
         return [i for i in csv_reader]
 
 def create_ou(ou_name):
-    os.system(f"samba-tool ou create {ou_name}")
+    os.system(f"samba-tool ou create OU='{ou_name}'")
 
 def create_user(f_name, l_name, role, phone, ou, password):
-    os.system(f"samba-tool user create {f_name.lower()}.{l_name.lower()} {password} --given-name {f_name} --surname {l_name} --job-title {role} --telephone-number {phone} --userou OU={ou}")
+    os.system(f"samba-tool user create '{f_name.lower()}.{l_name.lower()}' '{password}' --given-name '{f_name}' --surname '{l_name}' --job-title '{role}' --telephone-number '{phone}' --userou OU='{ou}'")
 
 if __name__ == "__main__":
     main()
